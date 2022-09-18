@@ -4,7 +4,7 @@ export default class productsController {
   constructor() {
     this.productService = new ProductsService();
   }
-  async getAll(req, res) {
+  async getAll() {
     try {
       const products = await this.productService.getAll();
       return products;
@@ -12,36 +12,31 @@ export default class productsController {
       console.log(err);
     }
   }
-  //   async getProductById(req, res) {
-  //     try {
-  //       const product = await this.productos.getById(req.params.id);
-  //       res.json(product);
-  //     } catch (err) {
-  //       res.status(500).json({ error: err.message });
-  //     }
-  //   }
-  //   async addProduct(req, res) {
-  //     try {
-  //       const product = await this.productos.add(req.body);
-  //       res.json(product);
-  //     } catch (err) {
-  //       res.status(500).json({ error: err.message });
-  //     }
-  //   }
-  //   async updateProduct(req, res) {
-  //     try {
-  //       const product = await this.productos.update(req.params.id, req.body);
-  //       res.json(product);
-  //     } catch (err) {
-  //       res.status(500).json({ error: err.message });
-  //     }
-  //   }
-  //   async deleteProduct(req, res) {
-  //     try {
-  //       const product = await this.productos.delete(req.params.id);
-  //       res.json(product);
-  //     } catch (err) {
-  //       res.status(500).json({ error: err.message });
-  //     }
-  //   }
+  async createProduct(producto) {
+    try {
+      const productCreated = await this.productService.createProduct(producto);
+      return productCreated;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  async deleteProduct(id) {
+    try {
+      const productDeleted = await this.productService.deleteProduct(id);
+      return productDeleted;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  async updateProduct(id, producto) {
+    try {
+      const productUpdated = await this.productService.updateProduct(
+        id,
+        producto
+      );
+      return productUpdated;
+    } catch (err) {
+      console.log(err);
+    }
+  }
 }
