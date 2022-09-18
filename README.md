@@ -77,3 +77,9 @@ mutation{
   }
 }
 ```
+
+### Crear .env y completar variables:
+
+- MONGO_USER
+- MONGO_PASS
+- DB_NAME
